@@ -18,7 +18,7 @@ In order to utilise the `trading-api` you'll need to generate an [API Key](https
 
 The API wrapper exposes a [Data](https://docs.exchange.coinjar.com/data-api/) and a [Trading](https://docs.exchange.coinjar.com/trading-api/) method.
 
-```
+```typescript
 import { CoinJarExchange } from 'coinjarexchange';
 
 const cje = new CoinJarExchange('MyApiKey');
