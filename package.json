@@ -1,0 +1,29 @@
+{
+  "name": "coinjarexchange",
+  "version": "1.0.0",
+  "description": "Typescript wrapper for CoinJar Exchange",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sketchthat/coinjarexchange.git"
+  },
+  "author": "Michael Kimpton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sketchthat/coinjarexchange/issues"
+  },
+  "homepage": "https://github.com/sketchthat/coinjarexchange#readme",
+  "dependencies": {
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^5.1.0",
+    "typescript": "^2.8.1"
+  }
+}
