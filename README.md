@@ -76,5 +76,5 @@ cje.trading().getFills()
 */
 ```
 
-- See all Trading APIs
-- See all Data APIs
+- [Trading](https://github.com/sketchthat/coinjarexchange/blob/master/src/trading.ts) methods are within `trading.ts`
+- [Data](https://github.com/sketchthat/coinjarexchange/blob/master/src/data.ts) methods are within `data.ts`
