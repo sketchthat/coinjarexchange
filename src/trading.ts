@@ -87,7 +87,7 @@ export class Trading {
   }
 
   public async getTransfers(qs?: TransferQueryString): Promise<Transfer[]> {
-    return this.common.request(true, 'get', `transfers`);
+    return this.common.request(true, 'get', `transfers`, qs);
   }
 
   public async postTransfersCreate(data: TransferCreate): Promise<Transfer> {
