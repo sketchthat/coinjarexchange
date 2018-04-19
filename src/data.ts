@@ -6,7 +6,6 @@ import { Product } from './interfaces/products.interface';
 import { Trade, TradeQueryString } from './interfaces/trades.interface';
 
 export class Data {
-  private url: string;
   private common: Common;
 
   constructor(

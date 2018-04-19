@@ -10,7 +10,6 @@ import { User, UserUpdate } from './interfaces/users.interface';
 
 export class Trading {
   private common: Common;
-  private url: string;
 
   constructor(
     token: string,
