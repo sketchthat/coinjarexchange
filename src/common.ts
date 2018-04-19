@@ -1,5 +1,6 @@
 import * as rp from 'request-promise';
 import { ApiError } from './interfaces/errors.interface';
+import { RequestOpts } from './interfaces/common.interface';
 
 export class Common {
   private uri: string;
@@ -11,17 +12,6 @@ export class Common {
   }
 
   public async request(auth: boolean, method: string, path: string, qs?: any, body?: any): Promise<any> {
-    interface RequestOpts {
-      uri: string;
-      json: boolean;
-      method: string;
-      qs?: any;
-      body?: any;
-      headers?: {
-        Authorization: string;
-      };
-    }
-
     const opts: RequestOpts = {
       uri: `${this.uri}/${path}`,
       json: true,

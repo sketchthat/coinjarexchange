@@ -1,5 +1,5 @@
 import { Common } from './common';
-import { CandelsQueryString } from './interfaces/candels.interface';
+import { CandlesQueryString } from './interfaces/candles.interface';
 import { MarketStats, MarketStatsQueryString } from './interfaces/markets.interface';
 import { Orderbook, OrderbookQueryString } from './interfaces/orderbook.interface';
 import { Product } from './interfaces/products.interface';
@@ -27,7 +27,7 @@ export class Data {
     return this.common.request(false, 'get', `products/${id}/book`, qs);
   }
 
-  public async getCandels(id: string, qs?: CandelsQueryString): Promise<[string, string, string, string][]> {
+  public async getCandles(id: string, qs: CandlesQueryString): Promise<[string, string, string, string][]> {
     return this.common.request(false, 'get', `products/${id}/candles`, qs);
   }
 

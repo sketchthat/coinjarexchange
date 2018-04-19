@@ -1,23 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "inlineSourceMap": true,
     "lib": [
       "es7",
       "dom"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "inlineSourceMap": true,
     "outDir": "dist",
-    "rootDir": "src",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "rootDir": "./",
+    "target": "es2016"
   },
   "include": [
     "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }

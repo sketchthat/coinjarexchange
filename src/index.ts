@@ -1,7 +1,7 @@
 import { Data } from './data';
 import { Trading } from './trading';
 
-export default class CoinJarExchange {
+export class CoinJarExchange {
   private dataClass: Data;
   private tradingClass: Trading;
 
