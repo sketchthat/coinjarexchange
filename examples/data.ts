@@ -11,7 +11,7 @@ cje.data().getCandles('BTCAUD', {
     interval: '1w',
   })
   .then(resp => {
-    console.log('getCandles Response')
+    console.log('getCandles Response');
     console.log(resp);
   })
   .catch(err => {
@@ -26,6 +26,6 @@ cje.data().getOrderbook('BTCAUD', { level: 1 })
     console.log(resp);
   })
   .catch(err => {
-    console.error('getOrderbook Error')
+    console.error('getOrderbook Error');
     console.error(err);
   });
