@@ -2,20 +2,20 @@
   "compilerOptions": {
     "inlineSourceMap": true,
     "lib": [
-      "es7",
-      "dom"
+      "es7"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "rootDir": "src",
     "outDir": "dist",
-    "rootDir": "./",
     "target": "es2016"
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ]
 }

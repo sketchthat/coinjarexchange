@@ -19,7 +19,7 @@ describe('Trading', () => {
   beforeEach(() => {
     commonStub.reset();
     commonStub.callsFake(
-      async (...args) => {
+      async () => {
       return { response: true };
     });
   });
@@ -517,7 +517,7 @@ describe('Trading', () => {
         null,
         {
           home_currency_code: 'AUD',
-        }
+        },
       ],
     ];
 
@@ -525,6 +525,4 @@ describe('Trading', () => {
     assert.strictEqual(commonStub.callCount, 1);
     assert.deepEqual(resp, { response: true });
   });
-
-
 });

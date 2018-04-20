@@ -19,7 +19,7 @@ describe('Data', () => {
   beforeEach(() => {
     commonStub.reset();
     commonStub.callsFake(
-      async (...args) => {
+      async () => {
       return { response: true };
     });
   });

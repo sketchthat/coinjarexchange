@@ -5,14 +5,15 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register",
+    "lint": "tslint --project tsconfig.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sketchthat/coinjarexchange.git"
   },
   "author": "Michael Kimpton",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sketchthat/coinjarexchange/issues"
   },
@@ -22,14 +23,30 @@
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.2",
-    "@types/mocha": "^5.0.0",
+    "@types/chai": "^4.1.3",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^9.6.6",
+    "@types/request-promise": "^4.1.41",
+    "@types/sinon": "^4.3.1",
     "chai": "^4.1.2",
     "mocha": "^5.1.0",
-    "mock-require": "^3.0.2",
+    "nyc": "^11.7.1",
     "sinon": "^4.5.0",
+    "ts-node": "^6.0.0",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.1.0",
     "typescript": "^2.8.1"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
   }
 }

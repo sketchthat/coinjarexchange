@@ -1,5 +1,5 @@
 import * as rp from 'request-promise';
-import { ApiError } from './interfaces/errors.interface';
+
 import { RequestOpts } from './interfaces/common.interface';
 
 export class Common {
@@ -26,12 +26,6 @@ export class Common {
       };
     }
 
-    return rp(opts)
-      .catch(err => {
-        const error: ApiError = err.error;
-        error.error_status = err.statusCode;
-
-        throw error;
-      });
+    return rp(opts);
   }
 }
