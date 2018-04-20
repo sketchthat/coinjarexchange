@@ -1,7 +1,7 @@
 'use strict';
 
 import { assert } from 'chai';
-import { sinon, SinonStub, stub } from 'sinon';
+import { SinonStub, stub } from 'sinon';
 
 import { Common } from './common';
 import { Data } from './data';
@@ -138,6 +138,44 @@ describe('Data', () => {
           before: 1524108721,
           after: 1523714400,
           interval: '1w',
+        },
+      ],
+    ];
+
+    assert.deepEqual(commonStub.args, expectedArgs);
+    assert.strictEqual(commonStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+  });
+
+  it('should call getMarketStats without a query string', async () => {
+    const resp: any = await data.getMarketStats('BTCAUD');
+
+    const expectedArgs = [
+      [
+        false,
+        'get',
+        'products/BTCAUD/stats',
+        undefined,
+      ],
+    ];
+
+    assert.deepEqual(commonStub.args, expectedArgs);
+    assert.strictEqual(commonStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+  });
+
+  it('should call getMarketStats with a query string', async () => {
+    const resp: any = await data.getMarketStats('BTCAUD', {
+      at: 1524262535,
+    });
+
+    const expectedArgs = [
+      [
+        false,
+        'get',
+        'products/BTCAUD/stats',
+        {
+          at: 1524262535,
         },
       ],
     ];

@@ -1,8 +1,7 @@
 'use strict';
 
 import { assert } from 'chai';
-import { sinon, SinonStub, stub } from 'sinon';
-import * as sinonAsPromised from 'sinon-as-promised';
+import { SinonStub, stub } from 'sinon';
 
 import { Common } from './common';
 

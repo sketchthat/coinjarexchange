@@ -28,5 +28,5 @@ export interface User {
 }
 
 export interface UserUpdate {
-  home_currency_code: User['home_currency']['iso_code'];
+  home_currency_code: User["home_currency"]["iso_code"];
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 import { assert } from 'chai';
-import { sinon, SinonStub, stub } from 'sinon';
+import { SinonStub, stub } from 'sinon';
 
 import { Common } from './common';
 import { Trading } from './trading';

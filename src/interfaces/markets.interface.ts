@@ -6,9 +6,9 @@ export interface MarketStats {
 }
 
 interface Stats {
-  '1w': string;
-  '1h': string;
-  '1d': string;
+  "1w": string;
+  "1h": string;
+  "1d": string;
 }
 
 export interface MarketStatsQueryString {

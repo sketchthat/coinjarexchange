@@ -2,7 +2,7 @@ export interface Order {
   oid: number;
   type: string;
   product_id: string;
-  side: 'buy' | 'sell';
+  side: "buy" | "sell";
   price: string;
   size: string;
   time_in_force: string;
@@ -14,8 +14,8 @@ export interface Order {
 
 export interface OrderCreate {
   product_id: string;
-  type?: Order['type'];
-  side: Order['side'];
+  type?: string;
+  side: "buy" | "sell";
   price: string;
   size: string;
   time_in_force?: string;

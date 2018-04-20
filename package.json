@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register",
+    "coverage": "nyc --reporter html mocha \"src/**/*.spec.ts\" --recursive --require ts-node/register --require source-map-support/register",
     "lint": "tslint --project tsconfig.json"
   },
   "repository": {
@@ -26,13 +27,13 @@
     "@types/chai": "^4.1.3",
     "@types/mocha": "^5.2.0",
     "@types/node": "^9.6.6",
-    "@types/request-promise": "^4.1.41",
     "@types/sinon": "^4.3.1",
     "chai": "^4.1.2",
-    "mocha": "^5.1.0",
+    "mocha": "^5.0.0",
     "nyc": "^11.7.1",
     "sinon": "^4.5.0",
-    "ts-node": "^6.0.0",
+    "source-map-support": "^0.5.4",
+    "ts-node": "^4.1.0",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.1.0",
     "typescript": "^2.8.1"
