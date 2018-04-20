@@ -15,7 +15,7 @@ export class Trading {
     token: string,
     sandbox?: boolean,
   ) {
-    this.common = new Common(sandbox ? `https://api.exchange.coinjar-sandbox.com` : `https://api.exchange.coinjar.com`, token);
+    this.common = new Common(sandbox, 'api', token);
   }
 
   public async getAccounts(): Promise<Account[]> {

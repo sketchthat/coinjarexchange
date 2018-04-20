@@ -11,135 +11,173 @@ describe('Common', () => {
   let rpStub: SinonStub;
   let common: Common;
 
-  before(() => {
-    common = new Common('https://data.exchange.coinjar-sandbox.com', 'MySecretToken');
-    rpStub = stub(rp, 'Request');
-  });
+  describe('Sandbox', () => {
+    before(() => {
+      common = new Common(true, 'data', 'MySecretToken');
+      rpStub = stub(rp, 'Request');
+    });
 
-  beforeEach(() => {
-    rpStub.reset();
-  });
+    beforeEach(() => {
+      rpStub.reset();
+    });
 
-  after(() => {
-    rpStub.restore();
-  });
+    after(() => {
+      rpStub.restore();
+    });
 
-  it('should call request without auth', async () => {
-    rpStub.resolves({ response: true });
+    it('should call sandbox request', async () => {
+      rpStub.resolves({ response: true });
 
-    const resp: any = await common.request(false, 'get', 'someMethod');
+      const resp: any = await common.request(false, 'get', 'someMethod');
 
-    const expectedArgs = [
-      [
-        {
-          uri: 'https://data.exchange.coinjar-sandbox.com/someMethod',
-          json: true,
-          method: 'get',
-          callback: undefined,
-        },
-      ],
-    ];
-
-    assert.deepEqual(rpStub.args, expectedArgs);
-    assert.strictEqual(rpStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
-  });
-
-  it('should call request with auth', async () => {
-    rpStub.resolves({ response: true });
-
-    const resp: any = await common.request(true, 'get', 'someMethod');
-
-    const expectedArgs = [
-      [
-        {
-          uri: 'https://data.exchange.coinjar-sandbox.com/someMethod',
-          json: true,
-          method: 'get',
-          headers: {
-            Authorization: 'Token token=\"MySecretToken\"',
+      const expectedArgs = [
+        [
+          {
+            uri: 'https://data.coinjar-sandbox.com/someMethod',
+            json: true,
+            method: 'get',
+            callback: undefined,
           },
-          callback: undefined,
-        },
-      ],
-    ];
+        ],
+      ];
 
-    assert.deepEqual(rpStub.args, expectedArgs);
-    assert.strictEqual(rpStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+      assert.deepEqual(rpStub.args, expectedArgs);
+      assert.strictEqual(rpStub.callCount, 1);
+      assert.deepEqual(resp, { response: true });
+    });
   });
 
-  it('should call request with query string', async () => {
-    rpStub.resolves({ response: true });
+  describe('Production', () => {
+    before(() => {
+      common = new Common(false, 'data', 'MySecretToken');
+      rpStub = stub(rp, 'Request');
+    });
 
-    const resp: any = await common.request(false, 'get', 'someMethod', { cursor: 1 });
+    beforeEach(() => {
+      rpStub.reset();
+    });
 
-    const expectedArgs = [
-      [
-        {
-          uri: 'https://data.exchange.coinjar-sandbox.com/someMethod',
-          json: true,
-          method: 'get',
-          qs: {
-            cursor: 1,
+    after(() => {
+      rpStub.restore();
+    });
+
+    it('should call request without auth', async () => {
+      rpStub.resolves({ response: true });
+
+      const resp: any = await common.request(false, 'get', 'someMethod');
+
+      const expectedArgs = [
+        [
+          {
+            uri: 'https://data.coinjar.com/someMethod',
+            json: true,
+            method: 'get',
+            callback: undefined,
           },
-          callback: undefined,
-        },
-      ],
-    ];
+        ],
+      ];
 
-    assert.deepEqual(rpStub.args, expectedArgs);
-    assert.strictEqual(rpStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
-  });
+      assert.deepEqual(rpStub.args, expectedArgs);
+      assert.strictEqual(rpStub.callCount, 1);
+      assert.deepEqual(resp, { response: true });
+    });
 
-  it('should call request with post data', async () => {
-    rpStub.resolves({ response: true });
+    it('should call request with auth', async () => {
+      rpStub.resolves({ response: true });
 
-    const resp: any = await common.request(false, 'post', 'someMethod', null, { buy: 504.54 });
+      const resp: any = await common.request(true, 'get', 'someMethod');
 
-    const expectedArgs = [
-      [
-        {
-          uri: 'https://data.exchange.coinjar-sandbox.com/someMethod',
-          json: true,
-          method: 'post',
-          qs: null,
-          body: {
-            buy: 504.54,
+      const expectedArgs = [
+        [
+          {
+            uri: 'https://data.coinjar.com/someMethod',
+            json: true,
+            method: 'get',
+            headers: {
+              Authorization: 'Token token=\"MySecretToken\"',
+            },
+            callback: undefined,
           },
-          callback: undefined,
-        },
-      ],
-    ];
+        ],
+      ];
 
-    assert.deepEqual(rpStub.args, expectedArgs);
-    assert.strictEqual(rpStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
-  });
+      assert.deepEqual(rpStub.args, expectedArgs);
+      assert.strictEqual(rpStub.callCount, 1);
+      assert.deepEqual(resp, { response: true });
+    });
 
-  it('should call request with post data', async () => {
-    rpStub.resolves({ response: true });
+    it('should call request with query string', async () => {
+      rpStub.resolves({ response: true });
 
-    const resp: any = await common.request(false, 'post', 'someMethod', null, { buy: 504.54 });
+      const resp: any = await common.request(false, 'get', 'someMethod', { cursor: 1 });
 
-    const expectedArgs = [
-      [
-        {
-          uri: 'https://data.exchange.coinjar-sandbox.com/someMethod',
-          json: true,
-          method: 'post',
-          qs: null,
-          body: {
-            buy: 504.54,
+      const expectedArgs = [
+        [
+          {
+            uri: 'https://data.coinjar.com/someMethod',
+            json: true,
+            method: 'get',
+            qs: {
+              cursor: 1,
+            },
+            callback: undefined,
           },
-          callback: undefined,
-        },
-      ],
-    ];
+        ],
+      ];
 
-    assert.deepEqual(rpStub.args, expectedArgs);
-    assert.strictEqual(rpStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+      assert.deepEqual(rpStub.args, expectedArgs);
+      assert.strictEqual(rpStub.callCount, 1);
+      assert.deepEqual(resp, { response: true });
+    });
+
+    it('should call request with post data', async () => {
+      rpStub.resolves({ response: true });
+
+      const resp: any = await common.request(false, 'post', 'someMethod', null, { buy: 504.54 });
+
+      const expectedArgs = [
+        [
+          {
+            uri: 'https://data.coinjar.com/someMethod',
+            json: true,
+            method: 'post',
+            qs: null,
+            body: {
+              buy: 504.54,
+            },
+            callback: undefined,
+          },
+        ],
+      ];
+
+      assert.deepEqual(rpStub.args, expectedArgs);
+      assert.strictEqual(rpStub.callCount, 1);
+      assert.deepEqual(resp, { response: true });
+    });
+
+    it('should call request with post data', async () => {
+      rpStub.resolves({ response: true });
+
+      const resp: any = await common.request(false, 'post', 'someMethod', null, { buy: 504.54 });
+
+      const expectedArgs = [
+        [
+          {
+            uri: 'https://data.coinjar.com/someMethod',
+            json: true,
+            method: 'post',
+            qs: null,
+            body: {
+              buy: 504.54,
+            },
+            callback: undefined,
+          },
+        ],
+      ];
+
+      assert.deepEqual(rpStub.args, expectedArgs);
+      assert.strictEqual(rpStub.callCount, 1);
+      assert.deepEqual(resp, { response: true });
+    });
   });
 });

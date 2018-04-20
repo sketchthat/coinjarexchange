@@ -11,7 +11,7 @@ export class Data {
   constructor(
     sandbox?: boolean,
   ) {
-    this.common = new Common(sandbox ? `https://data.exchange.coinjar-sandbox.com` : `https://data.exchange.coinjar.com`);
+    this.common = new Common(sandbox, 'data');
   }
 
   public async getProductTicker(id: string): Promise<Product> {
