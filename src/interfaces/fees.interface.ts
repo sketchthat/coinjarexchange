@@ -4,6 +4,7 @@ export interface Fee {
   value: string;
   fee_rate: number;
   fee: string;
+  liquidity: string;
   currency_code: string;
 }
 

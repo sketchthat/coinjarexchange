@@ -14,7 +14,7 @@
     "url": "git+https://github.com/sketchthat/coinjarexchange.git"
   },
   "author": "Michael Kimpton",
-  "license": "MIT",
+  "license": "WTFPL",
   "bugs": {
     "url": "https://github.com/sketchthat/coinjarexchange/issues"
   },

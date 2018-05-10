@@ -33,7 +33,7 @@ describe('Common', () => {
       const expectedArgs = [
         [
           {
-            uri: 'https://data.coinjar-sandbox.com/someMethod',
+            uri: 'https://data.exchange.coinjar-sandbox.com/someMethod',
             json: true,
             method: 'get',
             callback: undefined,
@@ -69,7 +69,7 @@ describe('Common', () => {
       const expectedArgs = [
         [
           {
-            uri: 'https://data.coinjar.com/someMethod',
+            uri: 'https://data.exchange.coinjar.com/someMethod',
             json: true,
             method: 'get',
             callback: undefined,
@@ -90,7 +90,7 @@ describe('Common', () => {
       const expectedArgs = [
         [
           {
-            uri: 'https://data.coinjar.com/someMethod',
+            uri: 'https://data.exchange.coinjar.com/someMethod',
             json: true,
             method: 'get',
             headers: {
@@ -114,7 +114,7 @@ describe('Common', () => {
       const expectedArgs = [
         [
           {
-            uri: 'https://data.coinjar.com/someMethod',
+            uri: 'https://data.exchange.coinjar.com/someMethod',
             json: true,
             method: 'get',
             qs: {
@@ -138,7 +138,7 @@ describe('Common', () => {
       const expectedArgs = [
         [
           {
-            uri: 'https://data.coinjar.com/someMethod',
+            uri: 'https://data.exchange.coinjar.com/someMethod',
             json: true,
             method: 'post',
             qs: null,
@@ -163,7 +163,7 @@ describe('Common', () => {
       const expectedArgs = [
         [
           {
-            uri: 'https://data.coinjar.com/someMethod',
+            uri: 'https://data.exchange.coinjar.com/someMethod',
             json: true,
             method: 'post',
             qs: null,

@@ -7,10 +7,10 @@ export class Common {
   private token: string;
 
   constructor(sandbox: boolean, subdomain: string, token?: string) {
-    let domain = 'coinjar.com';
+    let domain = 'exchange.coinjar.com';
 
     if (sandbox) {
-      domain = 'coinjar-sandbox.com';
+      domain = 'exchange.coinjar-sandbox.com';
     }
 
     this.uri = `https://${subdomain}.${domain}`;

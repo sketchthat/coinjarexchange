@@ -13,8 +13,8 @@ export interface TransferQueryString {
 }
 
 export interface TransferCreate {
-  type: "deposit" | "withdraw";
+  type: string;
   account_number: string;
-  counterparty_id: Transfer["counterparty_id"];
+  counterparty_id: string;
   amount: string;
 }
