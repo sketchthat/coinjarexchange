@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register",
-    "coverage": "nyc --reporter html mocha \"src/**/*.spec.ts\" --recursive --require ts-node/register --require source-map-support/register",
+    "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register --require source-map-support/register --full-trace --bail",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "coverage-ci": "npm run coverage | coveralls",
     "lint": "tslint --project tsconfig.json"
   },
   "repository": {
@@ -39,15 +40,19 @@
     "typescript": "^2.8.1"
   },
   "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
+    "include": [
+      "src/**/*.ts"
     ],
-    "exclude": [
-      "**/*.d.ts"
+    "extension": [
+      ".ts"
     ],
     "require": [
       "ts-node/register"
-    ]
+    ],
+    "reporter": [
+      "text-lcov"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }

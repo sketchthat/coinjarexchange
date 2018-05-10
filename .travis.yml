@@ -1,0 +1,8 @@
+language: nodejs
+
+before_script:
+  - npm install
+
+after_success:
+  - npm run lint
+  - npm run coverage-ci
