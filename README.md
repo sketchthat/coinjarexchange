@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/sketchthat/coinjarexchange/badge.svg?branch=master)](https://coveralls.io/github/sketchthat/coinjarexchange?branch=master) [![Build Status](https://travis-ci.org/sketchthat/coinjarexchange.svg?branch=master)](https://travis-ci.org/sketchthat/coinjarexchange)
+[![Build Status](https://travis-ci.org/sketchthat/coinjarexchange.svg?branch=master)](https://travis-ci.org/sketchthat/coinjarexchange) [![Coverage Status](https://coveralls.io/repos/github/sketchthat/coinjarexchange/badge.svg?branch=master)](https://coveralls.io/github/sketchthat/coinjarexchange?branch=master)
 ![Dependencies](https://david-dm.org/sketchthat/coinjarexchange.svg)
 
 # CoinJar Exchange Wrapper
