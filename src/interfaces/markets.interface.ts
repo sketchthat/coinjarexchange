@@ -5,7 +5,7 @@ export interface MarketStats {
   time: string;
 }
 
-interface Stats {
+export interface Stats {
   '1w': string;
   '1h': string;
   '1d': string;

@@ -3,8 +3,8 @@
 import { assert } from 'chai';
 import { SinonStub, stub } from 'sinon';
 
-import { Common } from './common';
-import { Data } from './data';
+import Common from './common';
+import Data from './data';
 
 describe('Data', () => {
   let data: Data;

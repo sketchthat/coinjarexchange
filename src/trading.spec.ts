@@ -3,8 +3,8 @@
 import { assert } from 'chai';
 import { SinonStub, stub } from 'sinon';
 
-import { Common } from './common';
-import { Trading } from './trading';
+import Common from './common';
+import Trading from './trading';
 
 describe('Trading', () => {
   let trading: Trading;

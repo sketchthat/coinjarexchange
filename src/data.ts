@@ -1,11 +1,11 @@
-import { Common } from './common';
+import Common from './common';
 import { CandlesQueryString } from './interfaces/candles.interface';
 import { MarketStats, MarketStatsQueryString } from './interfaces/markets.interface';
 import { Orderbook, OrderbookQueryString } from './interfaces/orderbook.interface';
 import { Product } from './interfaces/products.interface';
 import { Trade, TradeQueryString } from './interfaces/trades.interface';
 
-export class Data {
+class Data {
   private common: Common;
 
   constructor(
@@ -34,3 +34,5 @@ export class Data {
     return this.common.request(false, 'get', `products/${id}/stats`, qs);
   }
 }
+
+export default Data;

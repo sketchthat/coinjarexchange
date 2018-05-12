@@ -1,0 +1,34 @@
+import { Account, AccountExternal, AccountLine, AccountLineQueryString } from './interfaces/accounts.interface';
+import { Fee, FeeQueryString } from './interfaces/fees.interface';
+import { Fill, FillQueryString } from './interfaces/fills.interface';
+import { Order, OrderCreate, OrderQueryString } from './interfaces/orders.interface';
+import { Products } from './interfaces/products.interface';
+import { Token, TokenGenerate } from './interfaces/tokens.interface';
+import { Transfer, TransferCreate, TransferQueryString } from './interfaces/transfers.interface';
+import { User, UserUpdate } from './interfaces/users.interface';
+declare class Trading {
+    private common;
+    constructor(token: string, sandbox?: boolean);
+    getAccounts(): Promise<Account[]>;
+    getAccountsExternal(): Promise<AccountExternal[]>;
+    getAccount(accountNumber: string): Promise<Account>;
+    getAccountLines(accountNumber: string, qs?: AccountLineQueryString): Promise<AccountLine[]>;
+    getFees(qs?: FeeQueryString): Promise<Fee[]>;
+    getFills(qs?: FillQueryString): Promise<Fill[]>;
+    getFill(tid: string): Promise<Fill>;
+    getOrders(qs?: OrderQueryString): Promise<Order[]>;
+    getOrdersAll(qs?: OrderQueryString): Promise<Order[]>;
+    postOrderCreate(data: OrderCreate): Promise<Order>;
+    getOrder(oid: number): Promise<Order>;
+    deleteCancelOrder(oid: number): Promise<Order>;
+    getProducts(): Promise<Products[]>;
+    getProduct(id: string): Promise<Products>;
+    getTokens(): Promise<Token[]>;
+    postTokenGenerate(data: TokenGenerate): Promise<Token>;
+    deleteTokenRevoke(id: string): Promise<Token>;
+    getTransfers(qs?: TransferQueryString): Promise<Transfer[]>;
+    postTransfersCreate(data: TransferCreate): Promise<Transfer>;
+    getUser(): Promise<User>;
+    patchUpdateUser(data: UserUpdate): Promise<User>;
+}
+export default Trading;

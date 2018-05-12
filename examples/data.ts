@@ -1,6 +1,6 @@
 // Run `ts-node data.ts` to see example
 
-import { CoinJarExchange } from '../dist/src/index';
+import CoinJarExchange from '../dist/index';
 
 const cje = new CoinJarExchange();
 
