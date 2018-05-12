@@ -1,7 +1,7 @@
-import { Data } from './data';
-import { Trading } from './trading';
+import Data from './data';
+import Trading from './trading';
 
-export class CoinJarExchange {
+class CoinJarExchange {
   private dataClass: Data;
   private tradingClass: Trading;
 
@@ -21,3 +21,5 @@ export class CoinJarExchange {
     return this.tradingClass;
   }
 }
+
+export default CoinJarExchange;
