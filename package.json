@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc -d",
     "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register --require source-map-support/register --full-trace --bail",
-    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov --reporter=html npm test",
     "coverage-ci": "npm run coverage | coveralls",
     "lint": "tslint --project tsconfig.json"
   },
@@ -53,11 +53,11 @@
     "include": [
       "src/**/*.ts"
     ],
+    "exclude": [
+      "src/interfaces/*.ts"
+    ],
     "extension": [
       ".ts"
-    ],
-    "require": [
-      "ts-node/register"
     ],
     "reporter": [
       "text-lcov"
