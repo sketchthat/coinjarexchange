@@ -1,13 +1,13 @@
 {
   "name": "coinjarexchange",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Typescript wrapper for CoinJar Exchange",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -d",
-    "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register --require source-map-support/register --full-trace --bail",
-    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "test": "mocha \"src/**/*.ts\" --require ts-node/register --require source-map-support/register --full-trace --bail",
+    "coverage": "nyc npm test",
     "coverage-ci": "npm run coverage | coveralls",
     "lint": "tslint --project tsconfig.json"
   },
@@ -53,16 +53,19 @@
     "include": [
       "src/**/*.ts"
     ],
+    "exclude": [
+      "src/interfaces/*.ts"
+    ],
     "extension": [
       ".ts"
     ],
-    "require": [
-      "ts-node/register"
-    ],
     "reporter": [
-      "text-lcov"
+      "text-lcov",
+      "lcov",
+      "html"
     ],
     "sourceMap": true,
-    "instrument": true
+    "instrument": true,
+    "check-coverage": true
   }
 }
