@@ -1,3 +1,8 @@
+export interface OrderResponse {
+  cursor?: number;
+  payload: Order[];
+}
+
 export interface Order {
   oid: number;
   type: string;

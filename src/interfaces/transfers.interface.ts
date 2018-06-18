@@ -1,3 +1,8 @@
+export interface TransferResponse {
+  cursor?: number;
+  payload: Transfer[];
+}
+
 export interface Transfer {
   uuid: string;
   type: string;
