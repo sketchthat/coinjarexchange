@@ -14,6 +14,10 @@ export interface AccountExternal {
     currency_code: string;
     current_balance: string;
 }
+export interface AccountLinePayload {
+    cursor?: number;
+    payload: AccountLine[];
+}
 export interface AccountLine {
     code: string;
     amount: string;

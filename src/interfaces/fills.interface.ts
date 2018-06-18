@@ -1,3 +1,8 @@
+export interface FillResponse {
+  cursor?: number;
+  payload: Fill[];
+}
+
 export interface Fill {
   tid: number;
   oid: number;

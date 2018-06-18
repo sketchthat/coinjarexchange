@@ -1,11 +1,11 @@
 import Common from './common';
-import { Account, AccountExternal, AccountLine, AccountLineQueryString } from './interfaces/accounts.interface';
-import { Fee, FeeQueryString } from './interfaces/fees.interface';
-import { Fill, FillQueryString } from './interfaces/fills.interface';
-import { Order, OrderCreate, OrderQueryString } from './interfaces/orders.interface';
+import { Account, AccountExternal, AccountLinePayload, AccountLineQueryString } from './interfaces/accounts.interface';
+import { FeeQueryString, FeeResponse  } from './interfaces/fees.interface';
+import { Fill, FillQueryString, FillResponse } from './interfaces/fills.interface';
+import { Order, OrderCreate, OrderQueryString, OrderResponse } from './interfaces/orders.interface';
 import { Products } from './interfaces/products.interface';
 import { Token, TokenGenerate } from './interfaces/tokens.interface';
-import { Transfer, TransferCreate, TransferQueryString } from './interfaces/transfers.interface';
+import { Transfer, TransferCreate, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
 import { User, UserUpdate } from './interfaces/users.interface';
 
 class Trading {
@@ -30,28 +30,38 @@ class Trading {
     return this.common.request(true, 'get', `accounts/${accountNumber}`);
   }
 
-  public async getAccountLines(accountNumber: string, qs?: AccountLineQueryString): Promise<AccountLine[]> {
-    return this.common.request(true, 'get', `accounts/${accountNumber}/lines`, qs);
+  public async getAccountLines(accountNumber: string, qs?: AccountLineQueryString): Promise<AccountLinePayload> {
+    const resp = await this.common.request(true, 'get', `accounts/${accountNumber}/lines`, qs, undefined, true);
+
+    return this.common.returnCursor(resp);
   }
 
-  public async getFees(qs?: FeeQueryString): Promise<Fee[]> {
-    return this.common.request(true, 'get', `fee_charges`, qs);
+  public async getFees(qs?: FeeQueryString): Promise<FeeResponse> {
+    const resp = await this.common.request(true, 'get', `fee_charges`, qs, undefined, true);
+
+    return this.common.returnCursor(resp);
   }
 
-  public async getFills(qs?: FillQueryString): Promise<Fill[]> {
-    return this.common.request(true, 'get', `fills`, qs);
+  public async getFills(qs?: FillQueryString): Promise<FillResponse> {
+    const resp = await this.common.request(true, 'get', `fills`, qs, undefined, true);
+
+    return this.common.returnCursor(resp);
   }
 
   public async getFill(tid: string): Promise<Fill> {
     return this.common.request(true, 'get', `fills/${tid}`);
   }
 
-  public async getOrders(qs?: OrderQueryString): Promise<Order[]> {
-    return this.common.request(true, 'get', `orders`, qs);
+  public async getOrders(qs?: OrderQueryString): Promise<OrderResponse> {
+    const resp = await this.common.request(true, 'get', `orders`, qs, undefined, true);
+
+    return this.common.returnCursor(resp);
   }
 
-  public async getOrdersAll(qs?: OrderQueryString): Promise<Order[]> {
-    return this.common.request(true, 'get', `orders/all`, qs);
+  public async getOrdersAll(qs?: OrderQueryString): Promise<OrderResponse> {
+    const resp = await this.common.request(true, 'get', `orders/all`, qs, undefined, true);
+
+    return this.common.returnCursor(resp);
   }
 
   public async postOrderCreate(data: OrderCreate): Promise<Order> {
@@ -86,8 +96,10 @@ class Trading {
     return this.common.request(true, 'delete', `tokens/${id}`);
   }
 
-  public async getTransfers(qs?: TransferQueryString): Promise<Transfer[]> {
-    return this.common.request(true, 'get', `transfers`, qs);
+  public async getTransfers(qs?: TransferQueryString): Promise<TransferResponse> {
+    const resp = await this.common.request(true, 'get', `transfers`, qs, undefined, true);
+
+    return this.common.returnCursor(resp);
   }
 
   public async postTransfersCreate(data: TransferCreate): Promise<Transfer> {
