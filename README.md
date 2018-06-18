@@ -59,29 +59,33 @@ cje.trading().getFills()
   });
 
 /*
-[
- { tid: 2,
-    oid: 225,
-    product_id: 'LTCAUD',
-    price: '100.00000000',
-    size: '5.00000000',
-    value: '500.00',
-    side: 'buy',
-    liquidity: 'taker',
-    timestamp: '2018-04-16T00:00:50.154Z'
-  },
-  {
-    tid: 1,
-    oid: 112,
-    product_id: 'LTCAUD',
-    price: '164.00000000',
-    size: '10.00000000',
-    value: '1640.00',
-    side: 'buy',
-    liquidity: 'taker',
-    timestamp: '2018-03-12T00:05:59.339Z'
-  }
-]
+{
+  cursor: 0,
+  payload: [
+    {
+      tid: 2,
+      oid: 225,
+      product_id: 'LTCAUD',
+      price: '100.00000000',
+      size: '5.00000000',
+      value: '500.00',
+      side: 'buy',
+      liquidity: 'taker',
+      timestamp: '2018-04-16T00:00:50.154Z'
+    },
+    {
+      tid: 1,
+      oid: 112,
+      product_id: 'LTCAUD',
+      price: '164.00000000',
+      size: '10.00000000',
+      value: '1640.00',
+      side: 'buy',
+      liquidity: 'taker',
+      timestamp: '2018-03-12T00:05:59.339Z'
+    }
+  ]
+}
 */
 ```
 
