@@ -1,10 +1,10 @@
-import { Account, AccountExternal, AccountLine, AccountLineQueryString } from './interfaces/accounts.interface';
-import { Fee, FeeQueryString } from './interfaces/fees.interface';
-import { Fill, FillQueryString } from './interfaces/fills.interface';
-import { Order, OrderCreate, OrderQueryString } from './interfaces/orders.interface';
+import { Account, AccountExternal, AccountLinePayload, AccountLineQueryString } from './interfaces/accounts.interface';
+import { FeeQueryString, FeeResponse } from './interfaces/fees.interface';
+import { Fill, FillQueryString, FillResponse } from './interfaces/fills.interface';
+import { Order, OrderCreate, OrderQueryString, OrderResponse } from './interfaces/orders.interface';
 import { Products } from './interfaces/products.interface';
 import { Token, TokenGenerate } from './interfaces/tokens.interface';
-import { Transfer, TransferCreate, TransferQueryString } from './interfaces/transfers.interface';
+import { Transfer, TransferCreate, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
 import { User, UserUpdate } from './interfaces/users.interface';
 declare class Trading {
     private common;
@@ -12,12 +12,12 @@ declare class Trading {
     getAccounts(): Promise<Account[]>;
     getAccountsExternal(): Promise<AccountExternal[]>;
     getAccount(accountNumber: string): Promise<Account>;
-    getAccountLines(accountNumber: string, qs?: AccountLineQueryString): Promise<AccountLine[]>;
-    getFees(qs?: FeeQueryString): Promise<Fee[]>;
-    getFills(qs?: FillQueryString): Promise<Fill[]>;
+    getAccountLines(accountNumber: string, qs?: AccountLineQueryString): Promise<AccountLinePayload>;
+    getFees(qs?: FeeQueryString): Promise<FeeResponse>;
+    getFills(qs?: FillQueryString): Promise<FillResponse>;
     getFill(tid: string): Promise<Fill>;
-    getOrders(qs?: OrderQueryString): Promise<Order[]>;
-    getOrdersAll(qs?: OrderQueryString): Promise<Order[]>;
+    getOrders(qs?: OrderQueryString): Promise<OrderResponse>;
+    getOrdersAll(qs?: OrderQueryString): Promise<OrderResponse>;
     postOrderCreate(data: OrderCreate): Promise<Order>;
     getOrder(oid: number): Promise<Order>;
     deleteCancelOrder(oid: number): Promise<Order>;
@@ -26,7 +26,7 @@ declare class Trading {
     getTokens(): Promise<Token[]>;
     postTokenGenerate(data: TokenGenerate): Promise<Token>;
     deleteTokenRevoke(id: string): Promise<Token>;
-    getTransfers(qs?: TransferQueryString): Promise<Transfer[]>;
+    getTransfers(qs?: TransferQueryString): Promise<TransferResponse>;
     postTransfersCreate(data: TransferCreate): Promise<Transfer>;
     getUser(): Promise<User>;
     patchUpdateUser(data: UserUpdate): Promise<User>;

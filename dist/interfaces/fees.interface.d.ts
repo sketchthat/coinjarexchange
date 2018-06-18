@@ -1,3 +1,7 @@
+export interface FeeResponse {
+    cursor: number;
+    payload: Fee[];
+}
 export interface Fee {
     date: string;
     product_id: string;

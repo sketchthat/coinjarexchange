@@ -77,6 +77,13 @@ describe('Trading', () => {
   });
 
   it('should call getAccountLines without a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 10,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getAccountLines('ZZZ999');
 
     const expectedArgs = [
@@ -85,15 +92,24 @@ describe('Trading', () => {
         'get',
         'accounts/ZZZ999/lines',
         undefined,
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 10, payload: true });
   });
 
   it('should call getAccountLines with a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 15,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getAccountLines('ZZZ999', { cursor: 1 });
 
     const expectedArgs = [
@@ -104,15 +120,24 @@ describe('Trading', () => {
         {
           cursor: 1,
         },
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
   it('should call getFees without a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 10,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getFees();
 
     const expectedArgs = [
@@ -121,15 +146,24 @@ describe('Trading', () => {
         'get',
         'fee_charges',
         undefined,
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 10, payload: true });
   });
 
   it('should call getFees with a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 15,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getFees({ cursor: 1 });
 
     const expectedArgs = [
@@ -140,15 +174,24 @@ describe('Trading', () => {
         {
           cursor: 1,
         },
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
   it('should call getFills without a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 10,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getFills();
 
     const expectedArgs = [
@@ -157,15 +200,24 @@ describe('Trading', () => {
         'get',
         'fills',
         undefined,
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 10, payload: true });
   });
 
   it('should call getFills with a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 15,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getFills({ product_id: 'BTCAUD', oid: '123', cursor: 1 });
 
     const expectedArgs = [
@@ -178,12 +230,14 @@ describe('Trading', () => {
           product_id: 'BTCAUD',
           cursor: 1,
         },
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
   it('should call getFill', async () => {
@@ -203,6 +257,13 @@ describe('Trading', () => {
   });
 
   it('should call getOrders without a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 10,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getOrders();
 
     const expectedArgs = [
@@ -211,15 +272,24 @@ describe('Trading', () => {
         'get',
         'orders',
         undefined,
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 10, payload: true });
   });
 
   it('should call getOrders with a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 15,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getOrders({ cursor: 1 });
 
     const expectedArgs = [
@@ -230,15 +300,24 @@ describe('Trading', () => {
         {
           cursor: 1,
         },
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
   it('should call getOrdersAll without a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 10,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getOrdersAll();
 
     const expectedArgs = [
@@ -247,15 +326,24 @@ describe('Trading', () => {
         'get',
         'orders/all',
         undefined,
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 10, payload: true });
   });
 
   it('should call getOrdersAll with a query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 15,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getOrdersAll({ cursor: 1 });
 
     const expectedArgs = [
@@ -266,12 +354,14 @@ describe('Trading', () => {
         {
           cursor: 1,
         },
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
   it('should call postOrderCreate', async () => {
@@ -425,6 +515,13 @@ describe('Trading', () => {
   });
 
   it('should call getTransfers without query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 10,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getTransfers();
 
     const expectedArgs = [
@@ -433,15 +530,24 @@ describe('Trading', () => {
         'get',
         'transfers',
         undefined,
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 10, payload: true });
   });
 
   it('should call getTransfers with query string', async () => {
+    commonStub.onCall(0).returns({
+      headers: {
+        'x-cjx-cursor': 15,
+      },
+      body: true,
+    });
+
     const resp: any = await trading.getTransfers({ cursor: 1 });
 
     const expectedArgs = [
@@ -452,12 +558,14 @@ describe('Trading', () => {
         {
           cursor: 1,
         },
+        undefined,
+        true,
       ],
     ];
 
     assert.deepEqual(commonStub.args, expectedArgs);
     assert.strictEqual(commonStub.callCount, 1);
-    assert.deepEqual(resp, { response: true });
+    assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
   it('should call postTransfersCreate', async () => {

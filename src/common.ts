@@ -1,6 +1,7 @@
 import * as rp from 'request-promise';
 
 import { RequestOpts } from './interfaces/common.interface';
+import { CursorResponse, Response } from './interfaces/response.interface';
 
 class Common {
   private uri: string;
@@ -17,13 +18,14 @@ class Common {
     this.token = token;
   }
 
-  public async request(auth: boolean, method: string, path: string, qs?: any, body?: any): Promise<any> {
+  public async request(auth: boolean, method: string, path: string, qs?: any, body?: any, resolveWithFullResponse?: boolean): Promise<any> {
     const opts: RequestOpts = {
       uri: `${this.uri}/${path}`,
       json: true,
       method: method,
       qs: qs,
       body: body,
+      resolveWithFullResponse: resolveWithFullResponse,
     };
 
     if (auth) {
@@ -33,6 +35,15 @@ class Common {
     }
 
     return rp(opts);
+  }
+
+  public returnCursor(response: Response): CursorResponse {
+    const cursor = response.headers['x-cjx-cursor'];
+
+    return {
+      cursor,
+      payload: response.body,
+    };
   }
 }
 
