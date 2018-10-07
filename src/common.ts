@@ -2,7 +2,7 @@ import * as rp from 'request-promise';
 
 import { RequestOpts } from './interfaces/common.interface';
 
-class Common {
+export class Common {
   private uri: string;
   private token: string;
 
@@ -35,5 +35,3 @@ class Common {
     return rp(opts);
   }
 }
-
-export default Common;

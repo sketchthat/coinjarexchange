@@ -3,7 +3,7 @@
 import { assert } from 'chai';
 import { SinonStub, stub } from 'sinon';
 
-import CoinJarExchange from './index';
+import { CoinJarExchange } from './index';
 
 import * as rp from 'request-promise';
 
