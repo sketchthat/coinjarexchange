@@ -6,7 +6,7 @@ import { Products } from './interfaces/products.interface';
 import { Token, TokenGenerate } from './interfaces/tokens.interface';
 import { Transfer, TransferCreate, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
 import { User, UserUpdate } from './interfaces/users.interface';
-declare class Trading {
+export declare class Trading {
     private common;
     constructor(token: string, sandbox?: boolean);
     getAccounts(): Promise<Account[]>;
@@ -31,4 +31,3 @@ declare class Trading {
     getUser(): Promise<User>;
     patchUpdateUser(data: UserUpdate): Promise<User>;
 }
-export default Trading;
