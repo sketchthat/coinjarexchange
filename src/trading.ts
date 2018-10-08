@@ -1,4 +1,4 @@
-import Common from './common';
+import { Common } from './common';
 import { Account, AccountExternal, AccountLinePayload, AccountLineQueryString } from './interfaces/accounts.interface';
 import { FeeQueryString, FeeResponse  } from './interfaces/fees.interface';
 import { Fill, FillQueryString, FillResponse } from './interfaces/fills.interface';
@@ -8,7 +8,7 @@ import { Token, TokenGenerate } from './interfaces/tokens.interface';
 import { Transfer, TransferCreate, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
 import { User, UserUpdate } from './interfaces/users.interface';
 
-class Trading {
+export class Trading {
   private common: Common;
 
   constructor(
@@ -114,5 +114,3 @@ class Trading {
     return this.common.request(true, 'patch', `users/current`, null, data);
   }
 }
-
-export default Trading;
