@@ -2,7 +2,9 @@ language: nodejs
 
 before_script:
   - npm install
+  - npm install coveralls --save-dev
 
 script:
   - npm run lint
+  - npm run test
   - npm run coverage-ci
