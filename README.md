@@ -28,7 +28,7 @@ The API wrapper exposes a [Data](https://docs.exchange.coinjar.com/data-api/) an
 ### Example
 
 ```typescript
-import CoinJarExchange from 'coinjarexchange';
+import { CoinJarExchange } from 'coinjarexchange';
 
 const cje = new CoinJarExchange('MyApiKey');
 
