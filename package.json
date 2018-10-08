@@ -59,6 +59,9 @@
     "extension": [
       ".ts"
     ],
+    "require": [
+      "babel-core/register"
+    ],
     "reporter": [
       "text-lcov",
       "lcov",
