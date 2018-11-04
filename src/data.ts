@@ -36,7 +36,12 @@ export class Data {
     return this.common.request(false, 'get', `products/${id}/book`, qs);
   }
 
-  public async getCandles(id: string, before: number, after: number, interval: CandlesQueryStringInterval): Promise<[string, string, string, string][]> {
+  public async getCandles(
+    id: string,
+    before: number,
+    after: number,
+    interval: CandlesQueryStringInterval,
+  ): Promise<[string, string, string, string][]> {
     const qs: CandlesQueryString = {
       before,
       after,
