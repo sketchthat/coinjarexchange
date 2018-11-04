@@ -52,7 +52,11 @@ describe('Data', () => {
         false,
         'get',
         'products/BTCAUD/trades',
-        undefined,
+        {
+          after: undefined,
+          before: undefined,
+          limit: undefined,
+        },
       ],
     ];
 
@@ -62,11 +66,7 @@ describe('Data', () => {
   });
 
   it('should call getTrades with a query string', async () => {
-    const resp: any = await data.getTrades('BTCAUD', {
-      limit: 10,
-      before: 0,
-      after: 1,
-    });
+    const resp: any = await data.getTrades('BTCAUD', 10, 0, 1);
 
     const expectedArgs = [
       [
@@ -94,7 +94,9 @@ describe('Data', () => {
         false,
         'get',
         'products/BTCAUD/book',
-        undefined,
+        {
+          level: undefined,
+        },
       ],
     ];
 
@@ -104,7 +106,7 @@ describe('Data', () => {
   });
 
   it('should call getOrderbook with a query string', async () => {
-    const resp: any = await data.getOrderbook('BTCAUD', { level: 1 });
+    const resp: any = await data.getOrderbook('BTCAUD', 1);
 
     const expectedArgs = [
       [
@@ -123,11 +125,7 @@ describe('Data', () => {
   });
 
   it('should call getCandles with a query string', async () => {
-    const resp: any = await data.getCandles('BTCAUD', {
-      before: 1524108721,
-      after: 1523714400,
-      interval: '1w',
-    });
+    const resp: any = await data.getCandles('BTCAUD', 1524108721, 1523714400, '1w');
 
     const expectedArgs = [
       [
@@ -155,7 +153,9 @@ describe('Data', () => {
         false,
         'get',
         'products/BTCAUD/stats',
-        undefined,
+        {
+          at: undefined,
+        },
       ],
     ];
 
@@ -165,9 +165,7 @@ describe('Data', () => {
   });
 
   it('should call getMarketStats with a query string', async () => {
-    const resp: any = await data.getMarketStats('BTCAUD', {
-      at: 1524262535,
-    });
+    const resp: any = await data.getMarketStats('BTCAUD', 1524262535);
 
     const expectedArgs = [
       [
