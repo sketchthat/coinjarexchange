@@ -1,7 +1,7 @@
 import { Common } from './common';
-import { CandlesQueryString } from './interfaces/candles.interface';
+import { CandlesQueryString, CandlesQueryStringInterval } from './interfaces/candles.interface';
 import { MarketStats, MarketStatsQueryString } from './interfaces/markets.interface';
-import { Orderbook, OrderbookQueryString } from './interfaces/orderbook.interface';
+import { Orderbook, OrderbookQueryString, OrderbookQueryStringLevel } from './interfaces/orderbook.interface';
 import { Product } from './interfaces/products.interface';
 import { Trade, TradeQueryString } from './interfaces/trades.interface';
 
@@ -18,19 +18,39 @@ export class Data {
     return this.common.request(false, 'get', `products/${id}/ticker`);
   }
 
-  public async getTrades(id: string, qs?: TradeQueryString): Promise<Trade[]> {
+  public async getTrades(id: string, limit?: number, before?: number, after?: number): Promise<Trade[]> {
+    const qs: TradeQueryString = {
+      limit,
+      before,
+      after,
+    };
+
     return this.common.request(false, 'get', `products/${id}/trades`, qs);
   }
 
-  public async getOrderbook(id: string, qs?: OrderbookQueryString): Promise<Orderbook> {
+  public async getOrderbook(id: string, level?: OrderbookQueryStringLevel): Promise<Orderbook> {
+    const qs: OrderbookQueryString = {
+      level,
+    };
+
     return this.common.request(false, 'get', `products/${id}/book`, qs);
   }
 
-  public async getCandles(id: string, qs: CandlesQueryString): Promise<[string, string, string, string][]> {
+  public async getCandles(id: string, before: number, after: number, interval: CandlesQueryStringInterval): Promise<[string, string, string, string][]> {
+    const qs: CandlesQueryString = {
+      before,
+      after,
+      interval,
+    };
+
     return this.common.request(false, 'get', `products/${id}/candles`, qs);
   }
 
-  public async getMarketStats(id: string, qs?: MarketStatsQueryString): Promise<MarketStats> {
+  public async getMarketStats(id: string, at?: number): Promise<MarketStats> {
+    const qs: MarketStatsQueryString = {
+      at,
+    };
+
     return this.common.request(false, 'get', `products/${id}/stats`, qs);
   }
 }
