@@ -18,8 +18,10 @@ export interface TransferQueryString {
 }
 
 export interface TransferCreate {
-  type: string;
+  type: TransferCreateType;
   account_number: string;
   counterparty_id: string;
   amount: string;
 }
+
+export type TransferCreateType = 'deposit' | 'withdrawal';
