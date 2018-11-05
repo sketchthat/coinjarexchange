@@ -22,10 +22,12 @@ In order to utilise the `trading-api` you'll need to generate an [API Key](https
 The API wrapper exposes a [Data](https://docs.exchange.coinjar.com/data-api/) and a [Trading](https://docs.exchange.coinjar.com/trading-api/) method, which contain each of the endpoint functions.
 
 ### Exposed Functions
-- [Trading](https://github.com/sketchthat/coinjarexchange/wiki/Trading-Methods) methods are within [`trading.ts`](https://github.com/sketchthat/coinjarexchange/blob/master/src/trading.ts)
-- [Data](https://github.com/sketchthat/coinjarexchange/wiki/Data-Methods) methods are within [`data.ts`](https://github.com/sketchthat/coinjarexchange/blob/master/src/data.ts)
+- `Trading` methods are within [`trading.ts`](https://github.com/sketchthat/coinjarexchange/blob/master/src/trading.ts)
+- `Data` methods are within [`data.ts`](https://github.com/sketchthat/coinjarexchange/blob/master/src/data.ts)
 
-### Example
+### Examples
+
+Examples for usage of each function can be found within the [examples folder](https://github.com/sketchthat/coinjarexchange/tree/master/examples)
 
 ```typescript
 import { CoinJarExchange } from 'coinjarexchange';

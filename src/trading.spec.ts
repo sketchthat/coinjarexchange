@@ -91,7 +91,9 @@ describe('Trading', () => {
         true,
         'get',
         'accounts/ZZZ999/lines',
-        undefined,
+        {
+          cursor: undefined,
+        },
         undefined,
         true,
       ],
@@ -110,7 +112,7 @@ describe('Trading', () => {
       body: true,
     });
 
-    const resp: any = await trading.getAccountLines('ZZZ999', { cursor: 1 });
+    const resp: any = await trading.getAccountLines('ZZZ999', 1);
 
     const expectedArgs = [
       [
@@ -145,7 +147,9 @@ describe('Trading', () => {
         true,
         'get',
         'fee_charges',
-        undefined,
+        {
+          cursor: undefined,
+        },
         undefined,
         true,
       ],
@@ -164,7 +168,7 @@ describe('Trading', () => {
       body: true,
     });
 
-    const resp: any = await trading.getFees({ cursor: 1 });
+    const resp: any = await trading.getFees(1);
 
     const expectedArgs = [
       [
@@ -199,7 +203,11 @@ describe('Trading', () => {
         true,
         'get',
         'fills',
-        undefined,
+        {
+          product_id: undefined,
+          oid: undefined,
+          cursor: undefined,
+        },
         undefined,
         true,
       ],
@@ -218,7 +226,7 @@ describe('Trading', () => {
       body: true,
     });
 
-    const resp: any = await trading.getFills({ product_id: 'BTCAUD', oid: '123', cursor: 1 });
+    const resp: any = await trading.getFills('BTCAUD', '123', 1);
 
     const expectedArgs = [
       [
@@ -271,7 +279,9 @@ describe('Trading', () => {
         true,
         'get',
         'orders',
-        undefined,
+        {
+          cursor: undefined,
+        },
         undefined,
         true,
       ],
@@ -290,7 +300,7 @@ describe('Trading', () => {
       body: true,
     });
 
-    const resp: any = await trading.getOrders({ cursor: 1 });
+    const resp: any = await trading.getOrders(1);
 
     const expectedArgs = [
       [
@@ -325,7 +335,9 @@ describe('Trading', () => {
         true,
         'get',
         'orders/all',
-        undefined,
+        {
+          cursor: undefined,
+        },
         undefined,
         true,
       ],
@@ -344,7 +356,7 @@ describe('Trading', () => {
       body: true,
     });
 
-    const resp: any = await trading.getOrdersAll({ cursor: 1 });
+    const resp: any = await trading.getOrdersAll(1);
 
     const expectedArgs = [
       [
@@ -365,16 +377,7 @@ describe('Trading', () => {
   });
 
   it('should call postOrderCreate', async () => {
-    const args = {
-      product_id: 'BTCAUD',
-      type: 'LMT',
-      side: 'buy',
-      price: '1750.00',
-      size: '0.25',
-      time_in_force: 'GTC',
-    };
-
-    const resp: any = await trading.postOrderCreate(args);
+    const resp: any = await trading.postOrderCreate('BTCAUD', 'buy', '0.25', '1750.00', 'LMT', 'GTC');
 
     const expectedArgs = [
       [
@@ -479,7 +482,7 @@ describe('Trading', () => {
   });
 
   it('should call postTokenGenerate', async () => {
-    const resp: any = await trading.postTokenGenerate({ name: 'My New Token' });
+    const resp: any = await trading.postTokenGenerate('My New Token');
 
     const expectedArgs = [
       [
@@ -529,7 +532,9 @@ describe('Trading', () => {
         true,
         'get',
         'transfers',
-        undefined,
+        {
+          cursor: undefined,
+        },
         undefined,
         true,
       ],
@@ -548,7 +553,7 @@ describe('Trading', () => {
       body: true,
     });
 
-    const resp: any = await trading.getTransfers({ cursor: 1 });
+    const resp: any = await trading.getTransfers(1);
 
     const expectedArgs = [
       [
@@ -569,14 +574,7 @@ describe('Trading', () => {
   });
 
   it('should call postTransfersCreate', async () => {
-    const args = {
-      type: 'deposit',
-      account_number: 'XRP1000',
-      counterparty_id: '09279dff-d62d-44f6-97a0-0432ae235d24',
-      amount: '432.33',
-    };
-
-    const resp: any = await trading.postTransfersCreate(args);
+    const resp: any = await trading.postTransfersCreate('deposit', 'XRP1000', '09279dff-d62d-44f6-97a0-0432ae235d24', '432.33');
 
     const expectedArgs = [
       [
@@ -615,7 +613,7 @@ describe('Trading', () => {
   });
 
   it('should call patchUpdateUser', async () => {
-    const resp: any = await trading.patchUpdateUser({ home_currency_code: 'AUD' });
+    const resp: any = await trading.patchUpdateUser('AUD');
 
     const expectedArgs = [
       [

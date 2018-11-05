@@ -2,10 +2,18 @@ import { Common } from './common';
 import { Account, AccountExternal, AccountLinePayload, AccountLineQueryString } from './interfaces/accounts.interface';
 import { FeeQueryString, FeeResponse  } from './interfaces/fees.interface';
 import { Fill, FillQueryString, FillResponse } from './interfaces/fills.interface';
-import { Order, OrderCreate, OrderQueryString, OrderResponse, OrderCreateSide, OrderCreateType, OrderCreateTimeInForce } from './interfaces/orders.interface';
+import {
+  Order,
+  OrderCreate,
+  OrderCreateSide,
+  OrderCreateTimeInForce,
+  OrderCreateType,
+  OrderQueryString,
+  OrderResponse,
+} from './interfaces/orders.interface';
 import { Products } from './interfaces/products.interface';
 import { Token, TokenGenerate } from './interfaces/tokens.interface';
-import { Transfer, TransferCreate, TransferQueryString, TransferResponse, TransferCreateType } from './interfaces/transfers.interface';
+import { Transfer, TransferCreate, TransferCreateType, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
 import { User, UserUpdate } from './interfaces/users.interface';
 
 export class Trading {
@@ -43,7 +51,7 @@ export class Trading {
   public async getFees(cursor?: number): Promise<FeeResponse> {
     const qs: FeeQueryString = {
       cursor,
-    }
+    };
 
     const resp = await this.common.request(true, 'get', `fee_charges`, qs, undefined, true);
 
