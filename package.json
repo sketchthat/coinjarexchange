@@ -22,7 +22,8 @@
     "bitcoin",
     "ethereum",
     "ripple",
-    "litecoin"
+    "litecoin",
+    "zcash"
   ],
   "author": "Michael Kimpton",
   "license": "WTFPL",
