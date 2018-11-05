@@ -37,6 +37,11 @@ describe('Index', () => {
             json: true,
             method: 'get',
             callback: undefined,
+            qs: {
+              after: undefined,
+              before: undefined,
+              limit: undefined,
+            },
           },
         ],
       ];
@@ -88,6 +93,11 @@ describe('Index', () => {
             json: true,
             method: 'get',
             callback: undefined,
+            qs: {
+              after: undefined,
+              before: undefined,
+              limit: undefined,
+            },
           },
         ],
       ];

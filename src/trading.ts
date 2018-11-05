@@ -2,10 +2,18 @@ import { Common } from './common';
 import { Account, AccountExternal, AccountLinePayload, AccountLineQueryString } from './interfaces/accounts.interface';
 import { FeeQueryString, FeeResponse  } from './interfaces/fees.interface';
 import { Fill, FillQueryString, FillResponse } from './interfaces/fills.interface';
-import { Order, OrderCreate, OrderQueryString, OrderResponse } from './interfaces/orders.interface';
+import {
+  Order,
+  OrderCreate,
+  OrderCreateSide,
+  OrderCreateTimeInForce,
+  OrderCreateType,
+  OrderQueryString,
+  OrderResponse,
+} from './interfaces/orders.interface';
 import { Products } from './interfaces/products.interface';
 import { Token, TokenGenerate } from './interfaces/tokens.interface';
-import { Transfer, TransferCreate, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
+import { Transfer, TransferCreate, TransferCreateType, TransferQueryString, TransferResponse } from './interfaces/transfers.interface';
 import { User, UserUpdate } from './interfaces/users.interface';
 
 export class Trading {
@@ -30,19 +38,33 @@ export class Trading {
     return this.common.request(true, 'get', `accounts/${accountNumber}`);
   }
 
-  public async getAccountLines(accountNumber: string, qs?: AccountLineQueryString): Promise<AccountLinePayload> {
+  public async getAccountLines(accountNumber: string, cursor?: number): Promise<AccountLinePayload> {
+    const qs: AccountLineQueryString = {
+      cursor,
+    };
+
     const resp = await this.common.request(true, 'get', `accounts/${accountNumber}/lines`, qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
 
-  public async getFees(qs?: FeeQueryString): Promise<FeeResponse> {
+  public async getFees(cursor?: number): Promise<FeeResponse> {
+    const qs: FeeQueryString = {
+      cursor,
+    };
+
     const resp = await this.common.request(true, 'get', `fee_charges`, qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
 
-  public async getFills(qs?: FillQueryString): Promise<FillResponse> {
+  public async getFills(productId?: string, oid?: string, cursor?: number): Promise<FillResponse> {
+    const qs: FillQueryString = {
+      product_id: productId,
+      oid,
+      cursor,
+    };
+
     const resp = await this.common.request(true, 'get', `fills`, qs, undefined, true);
 
     return this.common.returnCursor(resp);
@@ -52,19 +74,43 @@ export class Trading {
     return this.common.request(true, 'get', `fills/${tid}`);
   }
 
-  public async getOrders(qs?: OrderQueryString): Promise<OrderResponse> {
+  public async getOrders(cursor?: number): Promise<OrderResponse> {
+    const qs: OrderQueryString = {
+      cursor,
+    };
+
     const resp = await this.common.request(true, 'get', `orders`, qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
 
-  public async getOrdersAll(qs?: OrderQueryString): Promise<OrderResponse> {
+  public async getOrdersAll(cursor?: number): Promise<OrderResponse> {
+    const qs: OrderQueryString = {
+      cursor,
+    };
+
     const resp = await this.common.request(true, 'get', `orders/all`, qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
 
-  public async postOrderCreate(data: OrderCreate): Promise<Order> {
+  public async postOrderCreate(
+    productId: string,
+    side: OrderCreateSide,
+    size: string,
+    price: string,
+    type: OrderCreateType,
+    timeInForce?: OrderCreateTimeInForce,
+  ): Promise<Order> {
+    const data: OrderCreate = {
+      product_id: productId,
+      side,
+      size,
+      price,
+      type,
+      time_in_force: timeInForce,
+    };
+
     return this.common.request(true, 'post', `orders`, null, data);
   }
 
@@ -88,7 +134,11 @@ export class Trading {
     return this.common.request(true, 'get', `tokens`);
   }
 
-  public async postTokenGenerate(data: TokenGenerate): Promise<Token> {
+  public async postTokenGenerate(name: string): Promise<Token> {
+    const data: TokenGenerate = {
+      name,
+    };
+
     return this.common.request(true, 'post', `tokens`, null, data);
   }
 
@@ -96,13 +146,29 @@ export class Trading {
     return this.common.request(true, 'delete', `tokens/${id}`);
   }
 
-  public async getTransfers(qs?: TransferQueryString): Promise<TransferResponse> {
+  public async getTransfers(cursor?: number): Promise<TransferResponse> {
+    const qs: TransferQueryString = {
+      cursor,
+    };
+
     const resp = await this.common.request(true, 'get', `transfers`, qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
 
-  public async postTransfersCreate(data: TransferCreate): Promise<Transfer> {
+  public async postTransfersCreate(
+    type: TransferCreateType,
+    accountNumber: string,
+    counterpartyId: string,
+    amount: string,
+  ): Promise<Transfer> {
+    const data: TransferCreate = {
+      type,
+      account_number: accountNumber,
+      counterparty_id: counterpartyId,
+      amount,
+    };
+
     return this.common.request(true, 'post', `transfers`, null, data);
   }
 
@@ -110,7 +176,11 @@ export class Trading {
     return this.common.request(true, 'get', `users/current`);
   }
 
-  public async patchUpdateUser(data: UserUpdate): Promise<User> {
+  public async patchUpdateUser(homeCurrencyCode: string): Promise<User> {
+    const data: UserUpdate = {
+      home_currency_code: homeCurrencyCode,
+    };
+
     return this.common.request(true, 'patch', `users/current`, null, data);
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "coinjarexchange",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Typescript wrapper for CoinJar Exchange",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -22,7 +22,8 @@
     "bitcoin",
     "ethereum",
     "ripple",
-    "litecoin"
+    "litecoin",
+    "zcash"
   ],
   "author": "Michael Kimpton",
   "license": "WTFPL",
