@@ -3,5 +3,6 @@ export interface Orderbook {
     asks: [string, string][];
 }
 export interface OrderbookQueryString {
-    level?: 1 | 2 | 3;
+    level?: OrderbookQueryStringLevel;
 }
+export declare type OrderbookQueryStringLevel = 1 | 2 | 3;

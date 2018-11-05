@@ -17,12 +17,15 @@ export interface Order {
 }
 export interface OrderCreate {
     product_id: string;
-    type?: string;
-    side: string;
+    type: OrderCreateType;
+    side: OrderCreateSide;
     price: string;
     size: string;
-    time_in_force?: string;
+    time_in_force?: OrderCreateTimeInForce;
 }
 export interface OrderQueryString {
     cursor?: number;
 }
+export declare type OrderCreateType = 'LMT' | 'MKT';
+export declare type OrderCreateSide = 'buy' | 'sell';
+export declare type OrderCreateTimeInForce = 'GTC' | 'IOC' | 'MOC';
