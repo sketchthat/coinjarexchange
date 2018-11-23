@@ -188,6 +188,22 @@ describe('Trading', () => {
     assert.deepEqual(resp, { cursor: 15, payload: true });
   });
 
+  it('should call getFeeStats', async () => {
+    const resp: any = await trading.getFeeStats();
+
+    const expectedArgs = [
+      [
+        true,
+        'get',
+        'fee_charges/stats',
+      ],
+    ];
+
+    assert.deepEqual(commonStub.args, expectedArgs);
+    assert.strictEqual(commonStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+  });
+
   it('should call getFills without a query string', async () => {
     commonStub.onCall(0).returns({
       headers: {
