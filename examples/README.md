@@ -2,13 +2,13 @@
 
 Examples are written in Typescript and can be run with `ts-node`.
 
-```
+```bash
 npm install ts-node -g
 ```
 
 Data examples don't require an API token.
 
-```
+```bash
 ts-node data/getTrades
 ```
 
@@ -18,7 +18,7 @@ When running through the examples be aware of any `patch` or `post` requests as 
 
 You can switch to sandbox mode by passing the `sandbox` token and `true` as the second parameter in the class initialization.
 
-```
+```typescript
 // Import Keys
 import * as fs from 'fs';
 const keys = JSON.parse(fs.readFileSync('./examples/keys.json', 'utf8'));
