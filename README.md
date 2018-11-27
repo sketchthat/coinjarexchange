@@ -28,7 +28,7 @@ The API wrapper exposes a [Data](https://docs.exchange.coinjar.com/data-api/) an
 
 ### Examples
 
-Examples for usage of each function can be found within the [examples folder](https://github.com/sketchthat/coinjarexchange/tree/master/examples/README.md)
+Examples for usage of each function can be found within the [examples folder](https://github.com/sketchthat/coinjarexchange/tree/master/examples)
 
 ```typescript
 import { CoinJarExchange } from 'coinjarexchange';
