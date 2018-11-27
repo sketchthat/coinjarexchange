@@ -7,10 +7,11 @@ Typescript / Node wrapper for the Data and Trading APIs offered by [CoinJar Exch
 
 ## Setup
 
-Install the dependancies with npm / yarn.
+Install the dependancies with `npm` or `yarn`.
 
 ```
 npm install coinjarexchange --save
+yarn add coinjarexchange
 ```
 
 ### API Key
@@ -27,7 +28,7 @@ The API wrapper exposes a [Data](https://docs.exchange.coinjar.com/data-api/) an
 
 ### Examples
 
-Examples for usage of each function can be found within the [examples folder](https://github.com/sketchthat/coinjarexchange/tree/master/examples)
+Examples for usage of each function can be found within the [examples folder](https://github.com/sketchthat/coinjarexchange/tree/master/examples/README.md)
 
 ```typescript
 import { CoinJarExchange } from 'coinjarexchange';
