@@ -1,5 +1,6 @@
 import { Account, AccountExternal, AccountLinePayload } from './interfaces/accounts.interface';
 import { FeeResponse } from './interfaces/fees.interface';
+import { FeeStats } from './interfaces/feeStats.interface';
 import { Fill, FillResponse } from './interfaces/fills.interface';
 import { Order, OrderCreateSide, OrderCreateTimeInForce, OrderCreateType, OrderResponse } from './interfaces/orders.interface';
 import { Products } from './interfaces/products.interface';
@@ -14,6 +15,7 @@ export declare class Trading {
     getAccount(accountNumber: string): Promise<Account>;
     getAccountLines(accountNumber: string, cursor?: number): Promise<AccountLinePayload>;
     getFees(cursor?: number): Promise<FeeResponse>;
+    getFeeStats(): Promise<FeeStats>;
     getFills(productId?: string, oid?: string, cursor?: number): Promise<FillResponse>;
     getFill(tid: string): Promise<Fill>;
     getOrders(cursor?: number): Promise<OrderResponse>;

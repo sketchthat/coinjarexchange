@@ -12,7 +12,6 @@ const cje = new CoinJarExchange(keys.token);
  */
 cje.trading().getFees()
   .then(fees => {
-
     console.log(fees);
   });
 

@@ -1,6 +1,7 @@
 import { Common } from './common';
 import { Account, AccountExternal, AccountLinePayload, AccountLineQueryString } from './interfaces/accounts.interface';
 import { FeeQueryString, FeeResponse  } from './interfaces/fees.interface';
+import { FeeStats } from './interfaces/feeStats.interface';
 import { Fill, FillQueryString, FillResponse } from './interfaces/fills.interface';
 import {
   Order,
@@ -27,11 +28,11 @@ export class Trading {
   }
 
   public async getAccounts(): Promise<Account[]> {
-    return this.common.request(true, 'get', `accounts`);
+    return this.common.request(true, 'get', 'accounts');
   }
 
   public async getAccountsExternal(): Promise<AccountExternal[]> {
-    return this.common.request(true, 'get', `accounts/external`);
+    return this.common.request(true, 'get', 'accounts/external');
   }
 
   public async getAccount(accountNumber: string): Promise<Account> {
@@ -53,9 +54,13 @@ export class Trading {
       cursor,
     };
 
-    const resp = await this.common.request(true, 'get', `fee_charges`, qs, undefined, true);
+    const resp = await this.common.request(true, 'get', 'fee_charges', qs, undefined, true);
 
     return this.common.returnCursor(resp);
+  }
+
+  public async getFeeStats(): Promise<FeeStats> {
+    return this.common.request(true, 'get', 'fee_charges/stats');
   }
 
   public async getFills(productId?: string, oid?: string, cursor?: number): Promise<FillResponse> {
@@ -65,7 +70,7 @@ export class Trading {
       cursor,
     };
 
-    const resp = await this.common.request(true, 'get', `fills`, qs, undefined, true);
+    const resp = await this.common.request(true, 'get', 'fills', qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
@@ -79,7 +84,7 @@ export class Trading {
       cursor,
     };
 
-    const resp = await this.common.request(true, 'get', `orders`, qs, undefined, true);
+    const resp = await this.common.request(true, 'get', 'orders', qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
@@ -89,7 +94,7 @@ export class Trading {
       cursor,
     };
 
-    const resp = await this.common.request(true, 'get', `orders/all`, qs, undefined, true);
+    const resp = await this.common.request(true, 'get', 'orders/all', qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
@@ -111,7 +116,7 @@ export class Trading {
       time_in_force: timeInForce,
     };
 
-    return this.common.request(true, 'post', `orders`, null, data);
+    return this.common.request(true, 'post', 'orders', null, data);
   }
 
   public async getOrder(oid: number): Promise<Order> {
@@ -123,7 +128,7 @@ export class Trading {
   }
 
   public async getProducts(): Promise<Products[]> {
-    return this.common.request(true, 'get', `products`);
+    return this.common.request(true, 'get', 'products');
   }
 
   public async getProduct(id: string): Promise<Products> {
@@ -131,7 +136,7 @@ export class Trading {
   }
 
   public async getTokens(): Promise<Token[]> {
-    return this.common.request(true, 'get', `tokens`);
+    return this.common.request(true, 'get', 'tokens');
   }
 
   public async postTokenGenerate(name: string): Promise<Token> {
@@ -139,7 +144,7 @@ export class Trading {
       name,
     };
 
-    return this.common.request(true, 'post', `tokens`, null, data);
+    return this.common.request(true, 'post', 'tokens', null, data);
   }
 
   public async deleteTokenRevoke(id: string): Promise<Token> {
@@ -151,7 +156,7 @@ export class Trading {
       cursor,
     };
 
-    const resp = await this.common.request(true, 'get', `transfers`, qs, undefined, true);
+    const resp = await this.common.request(true, 'get', 'transfers', qs, undefined, true);
 
     return this.common.returnCursor(resp);
   }
@@ -169,11 +174,11 @@ export class Trading {
       amount,
     };
 
-    return this.common.request(true, 'post', `transfers`, null, data);
+    return this.common.request(true, 'post', 'transfers', null, data);
   }
 
   public async getUser(): Promise<User> {
-    return this.common.request(true, 'get', `users/current`);
+    return this.common.request(true, 'get', 'users/current');
   }
 
   public async patchUpdateUser(homeCurrencyCode: string): Promise<User> {
@@ -181,6 +186,6 @@ export class Trading {
       home_currency_code: homeCurrencyCode,
     };
 
-    return this.common.request(true, 'patch', `users/current`, null, data);
+    return this.common.request(true, 'patch', 'users/current', null, data);
   }
 }

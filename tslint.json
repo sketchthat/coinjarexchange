@@ -10,7 +10,7 @@
     "triple-equals": false,
     "arrow-parens": [true, "ban-single-arg-parens"],
     "semicolon": [true, "always"],
-    "quotemark": [true, "single"],
+    "quotemark": [true, "single", "avoid-template"],
     "no-console": [false],
     "object-curly-spacing":[true, "always"],
     "object-literal-shorthand": false,
