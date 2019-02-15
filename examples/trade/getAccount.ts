@@ -16,6 +16,6 @@ cje.trading().getAccounts()
   .then(async accounts => {
     const lastAccount = accounts.pop();
 
-    const account = cje.trading().getAccount(lastAccount.number);
+    const account = await cje.trading().getAccount(lastAccount.number);
     console.log(account);
   });
