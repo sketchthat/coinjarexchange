@@ -5,7 +5,7 @@ const keys = JSON.parse(fs.readFileSync('./examples/keys.json', 'utf8'));
 // Start Example
 import { CoinJarExchange } from '../../src/index';
 
-const cje = new CoinJarExchange(keys.sandbox, true); // Test in Sandbox until 1-Dec-2018
+const cje = new CoinJarExchange(keys.token);
 
 /**
  * Get Fee Stats
