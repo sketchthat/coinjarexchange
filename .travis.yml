@@ -1,21 +1,11 @@
 language: nodejs
-node_js:
-  - "8"
-
-before_script:
+before_install:
   - npm install -g npm@latest
-
 install:
   - npm ci
-
-cache:
-  directories:
-  - "$HOME/.npm"
-
 script:
   - npm run lint
   - npm run test
-
-after_script:
+after_success:
   - npm install coveralls --save-dev
   - npm run coverage-ci
