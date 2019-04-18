@@ -1,14 +1,12 @@
-language: nodejs
+language: node_js
 node_js:
-  - "8"
+  - "lts/*"
 
-before_script:
-  - npm install
-  - npm install coveralls --save-dev
-
+before_install:
+  - npm install -g npm@6.4.0
 script:
   - npm run lint
   - npm run test
-
-after_script:
+after_success:
+  - npm install coveralls --save-dev
   - npm run coverage-ci

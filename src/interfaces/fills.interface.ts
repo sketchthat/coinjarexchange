@@ -12,6 +12,7 @@ export interface Fill {
   value: string;
   side: string;
   liquidity: string;
+  estimated_fee: string;
   timestamp: string;
 }
 
