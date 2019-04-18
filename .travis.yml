@@ -4,7 +4,13 @@ node_js:
 
 before_script:
   - npm install -g npm@latest
+
+install:
   - npm ci
+
+cache:
+  directories:
+  - "$HOME/.npm"
 
 script:
   - npm run lint
