@@ -2,6 +2,9 @@ language: nodejs
 node_js:
   - "8"
 
+before_script:
+  - npm install -g npm@latest
+
 script:
   - npm run lint
   - npm run test
