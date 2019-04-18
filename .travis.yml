@@ -1,8 +1,6 @@
-language: nodejs
+language: node_js
 before_install:
   - npm install -g npm@latest
-install:
-  - npm ci
 script:
   - npm run lint
   - npm run test
