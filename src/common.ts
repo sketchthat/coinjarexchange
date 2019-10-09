@@ -30,7 +30,9 @@ export class Common {
 
     if (auth) {
       opts.headers = {
-        Authorization: `Token token="${this.token}"`,
+        // Updated to work with latest version of CoinJarExchange API
+        // @MohamedGamil ~ Oct 9, 2019
+        Authorization: `Bearer ${this.token}`,
       };
     }
 
